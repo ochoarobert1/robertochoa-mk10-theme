@@ -1,0 +1,185 @@
+// compress: false, strictMath: true, javascriptEnabled: true
+/* --------------------------------------------------------------
+/* MAIN LESS MIXINS AND FUNCTIONS - LESSHAT
+-------------------------------------------------------------- */
+@import 'less/_lesshat.less';
+/* --------------------------------------------------------------
+Variables
+-------------------------------------------------------------- */
+
+/* Colors */
+@black: #000000;
+@gray3: #333333;
+@gray6: #666666;
+@gray9: #999999;
+@grayc: #cccccc;
+@grayf0: #f0f0f0;
+@white: #ffffff;
+@blue: #2B7BCB;
+@orange: #FFB12A;
+@red: #DF0209;
+
+/* --------------------------------------------------------------
+Body default
+-------------------------------------------------------------- */
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-weight: 400;
+    font-family: 'Poppins', sans-serif;
+}
+
+a {
+    .transition(all .2s ease-in-out);
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+
+.page-container {
+    min-height: 85vh;
+}
+
+.container {
+    max-width: 1380px;
+}
+
+.blinking-cursor {
+    font-weight: 100;
+    font-size: 40px;
+    display: inline-block;
+    background: black;
+    height: 27px;
+    width: 2px;
+    margin: 0 1px;
+    margin-bottom: -1px;
+    animation: 1s blink step-end infinite;
+}
+
+@keyframes blink {
+
+    from,
+    to {
+        background: transparent;
+    }
+
+    50% {
+        background: black;
+    }
+}
+
+/* --------------------------------------------------------------
+1.- HEADER
+-------------------------------------------------------------- */
+.img-logo {
+    max-width: 100px;
+}
+
+.the-navbar {
+    & .navbar-nav .nav-link {
+        position: relative;
+        color: @black;
+        padding: 0rem 1.5rem;
+        font-weight: 400;
+
+        &:before {
+            content: ' ';
+            position: absolute;
+            top: 8px;
+            left: 5px;
+            width: 0;
+            height: 0;
+            .transition(all .2s ease-in-out);
+        }
+
+        &:after {
+            content: ' ';
+            position: absolute;
+            top: 8px;
+            right: 5px;
+            width: 0;
+            height: 0;
+            .transition(all .2s ease-in-out);
+        }
+
+        &:hover {
+            color: @red;
+
+            &:before {
+                width: 7px;
+                height: 7px;
+                background: @red;
+            }
+
+            &:after {
+                width: 7px;
+                height: 7px;
+                background: @red;
+            }
+        }
+    }
+}
+
+
+.the-hero {
+    & .row-hero {
+        min-height: 85vh;
+        background: url(../images/bg-sprite.jpg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: right bottom;
+    }
+
+    & .hero-info {
+        font-size: 1.3rem;
+        font-weight: 300;
+        line-height: 2.5rem;
+        margin-top: -5rem;
+
+        .hero-info-content {
+            padding-right: 5rem;
+        }
+
+        & h1 {
+            font-weight: 200;
+            font-size: 3.5rem;
+            letter-spacing: -3px;
+            margin-bottom: 1rem;
+        }
+
+        & h2 {
+            font-size: 2rem;
+            line-height: 3rem;
+            font-weight: 400;
+            letter-spacing: -2px;
+            margin-bottom: 1.5rem;
+        }
+
+        & .btn-danger {
+            border-color: @red;
+            color: @red;
+            padding: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 400;
+            background: none transparent;
+            margin-top: 1.5rem;
+            .transition(all .3s ease-in-out);
+
+            &:hover {
+                background: @red;
+                color: @white;
+            }
+        }
+
+        & .typewrite {
+            color: @black;
+            font-weight: 700;
+        }
+    }
+
+}
