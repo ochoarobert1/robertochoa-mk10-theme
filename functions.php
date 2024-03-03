@@ -18,26 +18,29 @@ function robertochoa_jquery_enqueue() {
         /*- JQUERY ON LOCAL  -*/
         wp_register_script( 'jquery', get_template_directory_uri() . '/js/jquery.min.js', false, '3.4.1', false);
         /*- JQUERY MIGRATE ON LOCAL  -*/
-        wp_register_script( 'jquery-migrate', get_template_directory_uri() . '/js/jquery-migrate.min.js',  array('jquery'), '3.0.1', false);
+        wp_register_script( 'jquery-migrate', get_template_directory_uri() . '/js/jquery-migrate.min.js',  array('jquery'), '3.1.0', false);
     } else {
         /*- JQUERY ON WEB  -*/
         wp_register_script( 'jquery', 'https://code.jquery.com/jquery-3.4.1.min.js', false, '3.4.1', false);
         /*- JQUERY MIGRATE ON WEB  -*/
-        wp_register_script( 'jquery-migrate', 'https://code.jquery.com/jquery-migrate-3.0.1.min.js', array('jquery'), '3.0.1', true);
+        wp_register_script( 'jquery-migrate', 'https://code.jquery.com/jquery-migrate-3.1.0.min.js', array('jquery'), '3.1.0', true);
     }
     wp_enqueue_script('jquery');
     wp_enqueue_script('jquery-migrate');
 }
 
 /* NOW ALL THE JS FILES */
+
 require_once('includes/wp_enqueue_scripts.php');
 
 /* --------------------------------------------------------------
     ADD CUSTOM WALKER BOOTSTRAP
 -------------------------------------------------------------- */
 
-// WALKER COMPLETO TOMADO DESDE EL NAVBAR COLLAPSE
-require_once('includes/class-wp-bootstrap-navwalker.php');
+add_action( 'after_setup_theme', 'robertochoa_register_navwalker' );
+function robertochoa_register_navwalker(){
+    require_once('includes/class-wp-bootstrap-navwalker.php');
+}
 
 /* --------------------------------------------------------------
     ADD CUSTOM WORDPRESS FUNCTIONS
@@ -107,8 +110,7 @@ add_theme_support( 'html5', array(
 -------------------------------------------------------------- */
 
 register_nav_menus( array(
-    'header_menu' => __( 'Menu Header - Principal', 'robertochoa' ),
-    'footer_menu' => __( 'Menu Footer - Principal', 'robertochoa' ),
+    'header_menu' => __( 'Menu Header - Principal', 'robertochoa' )
 ) );
 
 /* --------------------------------------------------------------
@@ -127,6 +129,16 @@ function robertochoa_widgets_init() {
         'after_title'   => '</h2>',
     ) );
 
+    register_sidebars( 4, array(
+        'name'          => __('Footer Section %d', 'robertochoa'),
+        'id'            => 'sidebar_footer',
+        'description'   => __('Footer Section', 'robertochoa'),
+        'before_widget' => '<li id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</li>',
+        'before_title'  => '<h2 class="widgettitle">',
+        'after_title'   => '</h2>'
+    ) );
+
     //    register_sidebar( array(
     //        'name' => __( 'Shop Sidebar', 'robertochoa' ),
     //        'id' => 'shop_sidebar',
@@ -142,23 +154,23 @@ function robertochoa_widgets_init() {
     CUSTOM ADMIN LOGIN
 -------------------------------------------------------------- */
 
-function robertochoa_custom_admin_styles() {
+function custom_admin_styles() {
     $version_remove = NULL;
     wp_register_style('wp-admin-style', get_template_directory_uri() . '/css/custom-wordpress-admin-style.css', false, $version_remove, 'all');
     wp_enqueue_style('wp-admin-style');
 }
-add_action('login_head', 'robertochoa_custom_admin_styles');
-add_action('admin_init', 'robertochoa_custom_admin_styles');
+add_action('login_head', 'custom_admin_styles');
+add_action('admin_init', 'custom_admin_styles');
 
 
-function robertochoa_dashboard_footer() {
+function dashboard_footer() {
     echo '<span id="footer-thankyou">';
     _e ('Gracias por crear con ', 'robertochoa' );
     echo '<a href="http://wordpress.org/" target="_blank">WordPress.</a> - ';
     _e ('Tema desarrollado por ', 'robertochoa' );
     echo '<a href="http://robertochoa.com.ve/?utm_source=footer_admin&utm_medium=link&utm_content=robertochoa" target="_blank">Robert Ochoa</a></span>';
 }
-add_filter('admin_footer_text', 'robertochoa_dashboard_footer');
+add_filter('admin_footer_text', 'dashboard_footer');
 
 /* --------------------------------------------------------------
     ADD CUSTOM METABOX
@@ -176,7 +188,7 @@ require_once('includes/wp_custom_post_type.php');
     ADD CUSTOM THEME CONTROLS
 -------------------------------------------------------------- */
 
-//require_once('includes/wp_custom_theme_control.php');
+require_once('includes/wp_custom_theme_control.php');
 
 /* --------------------------------------------------------------
     ADD CUSTOM IMAGE SIZE
@@ -188,5 +200,5 @@ if ( function_exists('add_theme_support') ) {
 if ( function_exists('add_image_size') ) {
     add_image_size('avatar', 100, 100, true);
     add_image_size('blog_img', 276, 217, true);
-    add_image_size('single_img', 636, 297, true );
+    add_image_size('single_img', 9999, 400, false );
 }

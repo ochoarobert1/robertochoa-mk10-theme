@@ -1,5 +1,5 @@
 <?php
-add_action( 'tgmpa_register', 'robertochoa__register_required_plugins' );
+add_action( 'tgmpa_register', 'robertochoa_register_required_plugins' );
 
 /**
  * Register the required plugins for this theme.
@@ -18,7 +18,7 @@ add_action( 'tgmpa_register', 'robertochoa__register_required_plugins' );
  *
  * This function is hooked into `tgmpa_register`, which is fired on the WP `init` action on priority 10.
  */
-function robertochoa__register_required_plugins() {
+function robertochoa_register_required_plugins() {
     /*
      * Array of plugin arrays. Required keys are name and slug.
      * If the source is NOT from the .org repo, then source is also required.
@@ -60,7 +60,7 @@ function robertochoa__register_required_plugins() {
      * Only uncomment the strings in the config array if you want to customize the strings.
      */
     $config = array(
-        'id'           => 'robertochoa',                 // Unique ID for hashing notices for multiple instances of TGMPA.
+        'id'           => 'robertochoa_tgmpa',                 // Unique ID for hashing notices for multiple instances of TGMPA.
         'default_path' => '',                      // Default absolute path to bundled plugins.
         'menu'         => 'tgmpa-install-plugins', // Menu slug.
         'parent_slug'  => 'themes.php',            // Parent menu slug.
@@ -73,67 +73,67 @@ function robertochoa__register_required_plugins() {
 
 
         'strings'      => array(
-            'page_title'                      => __( 'Install Required Plugins', 'robertochoa' ),
-            'menu_title'                      => __( 'Install Plugins', 'robertochoa' ),
-            'installing'                      => __( 'Installing Plugin: %s', 'robertochoa' ),
-            'updating'                        => __( 'Updating Plugin: %s', 'robertochoa' ),
-            'oops'                            => __( 'Something went wrong with the plugin API.', 'robertochoa' ),
+            'page_title'                      => __( 'Instalar Plugins Requeridos', 'robertochoa' ),
+            'menu_title'                      => __( 'Instalar Plugins', 'robertochoa' ),
+            'installing'                      => __( 'Instalando Plugin: %s', 'robertochoa' ),
+            'updating'                        => __( 'Actualizando Plugin: %s', 'robertochoa' ),
+            'oops'                            => __( 'Ocurrió un error con el API del plugin.', 'robertochoa' ),
             'notice_can_install_required'     => _n_noop(
-                'This theme requires the following plugin: %1$s.',
-                'This theme requires the following plugins: %1$s.',
+                'Este tema requiere el siguiente plugin: %1$s.',
+                'Este tema requiere los siguientes plugins: %1$s.',
                 'robertochoa'
             ),
             'notice_can_install_recommended'  => _n_noop(
-                'This theme recommends the following plugin: %1$s.',
-                'This theme recommends the following plugins: %1$s.',
+                'Este tema recomienda el siguiente plugin: %1$s.',
+                'Este tema recomienda los siguientes plugins: %1$s.',
                 'robertochoa'
             ),
             'notice_ask_to_update'            => _n_noop(
-                'The following plugin needs to be updated to its latest version to ensure maximum compatibility with this theme: %1$s.',
-                'The following plugins need to be updated to their latest version to ensure maximum compatibility with this theme: %1$s.',
+                'El siguiente plugin necesita ser actualizado a su última versión para asegurar su compatibilidad con este tema: %1$s.',
+                'Los siguientes plugins necesitan ser actualizados a su última versión para asegurar su compatibilidad con este tema: %1$s.',
                 'robertochoa'
             ),
             'notice_ask_to_update_maybe'      => _n_noop(
-                'There is an update available for: %1$s.',
-                'There are updates available for the following plugins: %1$s.',
+                'Hay una actualización disponible para: %1$s.',
+                'Hay actualizaciones disponible para los siguientes plugins: %1$s.',
                 'robertochoa'
             ),
             'notice_can_activate_required'    => _n_noop(
-                'The following required plugin is currently inactive: %1$s.',
-                'The following required plugins are currently inactive: %1$s.',
+                'El siguiente plugin requerido esta actualmente desactivado: %1$s.',
+                'Los siguientes plugins requeridos estan actualmente desactivados: %1$s.',
                 'robertochoa'
             ),
             'notice_can_activate_recommended' => _n_noop(
-                'The following recommended plugin is currently inactive: %1$s.',
-                'The following recommended plugins are currently inactive: %1$s.',
+                'Este plugin recomendado esta actualmente desactivado: %1$s.',
+                'Los siguientes plugins recomendados estan actualmente desactivados: %1$s.',
                 'robertochoa'
             ),
             'install_link'                    => _n_noop(
-                'Begin installing plugin',
-                'Begin installing plugins',
+                'Iniciar la instalación del plugin',
+                'Iniciar la instalación de los plugins',
                 'robertochoa'
             ),
             'update_link'                       => _n_noop(
-                'Begin updating plugin',
-                'Begin updating plugins',
+                'Iniciar la actualización del plugin',
+                'Iniciar la actualización de los plugins',
                 'robertochoa'
             ),
             'activate_link'                   => _n_noop(
-                'Begin activating plugin',
-                'Begin activating plugins',
+                'Iniciar la activación del plugin',
+                'Iniciar la activación de los plugins',
                 'robertochoa'
             ),
-            'return'                          => __( 'Return to Required Plugins Installer', 'robertochoa' ),
-            'plugin_activated'                => __( 'Plugin activated successfully.', 'robertochoa' ),
-            'activated_successfully'          => __( 'The following plugin was activated successfully:', 'robertochoa' ),
-            'plugin_already_active'           => __( 'No action taken. Plugin %1$s was already active.', 'robertochoa' ),
-            'plugin_needs_higher_version'     => __( 'Plugin not activated. A higher version of %s is needed for this theme. Please update the plugin.', 'robertochoa' ),
-            'complete'                        => __( 'All plugins installed and activated successfully. %1$s', 'robertochoa' ),
-            'dismiss'                         => __( 'Dismiss this notice', 'robertochoa' ),
-            'notice_cannot_install_activate'  => __( 'There are one or more required or recommended plugins to install, update or activate.', 'robertochoa' ),
-            'contact_admin'                   => __( 'Please contact the administrator of this site for help.', 'robertochoa' ),
+            'return'                          => __( 'Volver al Instalador de plugins requeridos', 'robertochoa' ),
+            'plugin_activated'                => __( 'Plugin activado con éxito.', 'robertochoa' ),
+            'activated_successfully'          => __( 'El siguiente plugin ha sido activado exitosamente:', 'robertochoa' ),
+            'plugin_already_active'           => __( 'No se tomón ninguna acción. El plugin %1$s ya estaba activado.', 'robertochoa' ),
+            'plugin_needs_higher_version'     => __( 'Plugin no activo. Una versión mas alta de %s es necesaria para este tema. Por favor, actualiza el plugin.', 'robertochoa' ),
+            'complete'                        => __( 'Todos los plugins han sido instalados y activados exitosamente. %1$s', 'robertochoa' ),
+            'dismiss'                         => __( 'Ocultar este aviso', 'robertochoa' ),
+            'notice_cannot_install_activate'  => __( 'Hay uno o más plugins necesarios o recomendados para instalar, actualizar o activar.', 'robertochoa' ),
+            'contact_admin'                   => __( 'Por favor, contacte con el administrador de este sitio para mas ayuda.', 'robertochoa' ),
 
-            'nag_type'                        => '', // Determines admin notice type - can only be one of the typical WP notice classes, such as 'updated', 'update-nag', 'notice-warning', 'notice-info' or 'error'. Some of which may not work as expected in older WP versions.
+            'nag_type'                        => 'notice-info', // Determines admin notice type - can only be one of the typical WP notice classes, such as 'updated', 'update-nag', 'notice-warning', 'notice-info' or 'error'. Some of which may not work as expected in older WP versions.
         ),
     );
 

@@ -2,6 +2,7 @@
 <?php the_post(); ?>
 <main class="container-fluid p-0" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
     <div class="row no-gutters">
+        <?php /* THE HERO */?>
         <section class="the-hero col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
             <div class="container">
                 <div class="row row-hero align-items-center">
@@ -25,7 +26,19 @@
                 </div>
             </div>
         </section>
+        <?php /* THE SERVICES */ ?>
+        <section class="the-services col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="container">
+                <div class="row">
+                    <div class="title-container col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <h2><?php _e('Algunos de los servicios que ofrezco', 'robertochoa'); ?></h2>
+                    </div>
+                    <div class="service-image col-6"></div>
+                    <div class="service-text col-6"></div>
+                </div>
+            </div>
 
+        </section>
 
 
 
